@@ -1,7 +1,10 @@
 # Link Tracker - NestJS Challenge
 
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+
+<p style="text-align: center;">
+  <a href="http://nestjs.com/" target="blank">
+    <img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" />
+  </a>
 </p>
 
 [![NPM Version](https://img.shields.io/npm/v/@nestjs/core.svg)](https://www.npmjs.com/~nestjscore)
@@ -22,6 +25,11 @@ Este proyecto es una aplicación de seguimiento y enmascaramiento de URLs, que p
 - Definir contraseñas y fechas de expiración para enlaces enmascarados.
 
 Este proyecto está desarrollado con [NestJS](https://nestjs.com/), un framework progresivo de Node.js.
+
+## Almacenamiento de datos
+
+Para este desafío, los datos de los enlaces se almacenan en memoria. Esto significa que, al reiniciar la aplicación, se perderán todos los enlaces creados y sus estadísticas.
+
 
 ## Casos de uso
 
