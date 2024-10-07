@@ -1,22 +1,37 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { LinkService } from './links/links.service';
 
 describe('AppController', () => {
   let appController: AppController;
+  let linkService: LinkService;
 
   beforeEach(async () => {
-    const app: TestingModule = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       controllers: [AppController],
-      providers: [AppService],
+      providers: [
+        AppService,
+        {
+          provide: LinkService,
+          useValue: {
+            createLink: jest.fn(),
+            getLinkById: jest.fn(),
+            incrementStats: jest.fn(),
+            getStats: jest.fn(),
+            invalidateLink: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
-    appController = app.get<AppController>(AppController);
+    appController = moduleRef.get<AppController>(AppController);
+    linkService = moduleRef.get<LinkService>(LinkService);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('getHealth', () => {
+    it('should return "Success"', () => {
+      expect(appController.getHealth()).toBe('Success');
     });
   });
 });

@@ -83,6 +83,10 @@ $ npm run test:cov
 ## Endpoints de la aplicación
 
 ### Crear un enlace enmascarado
+- **GET** `/health`
+    - Respuesta: 'Success'.
+
+### Crear un enlace enmascarado
 - **POST** `/create`
     - Parámetros (body): `target` (URL original), `password` (opcional), `expirationDate` (opcional).
     - Respuesta: URL enmascarada.

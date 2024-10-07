@@ -39,24 +39,26 @@ export class LinkService {
     return newLink;
   }
 
-  getLinkById(id: string, password?: string): Link | undefined {
-
+  getLinkById(id: string, password?: string): Link | null {
     const link = this.links.get(id);
-    console.log(link)
+
     if (!link) {
-      return undefined;
+      return null;
     }
 
     if (link.expirationDate && new Date() > link.expirationDate) {
       link.isValid = false;
-      return undefined;
     }
 
     if (link.password && link.password !== password) {
-      return undefined;
+      return null;
     }
 
-    return link.isValid ? link : undefined;
+    if (!link.isValid) {
+      return null;
+    }
+
+    return link;
   }
 
   invalidateLink(id: string): boolean {
